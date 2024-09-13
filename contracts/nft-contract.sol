@@ -24,15 +24,16 @@ contract EventTicketNFT is ERC721URIStorage, Ownable {
      * @param name The name of the NFT collection (e.g., "Event Ticket")
      * @param symbol The symbol of the NFT (e.g., "ETK")
      * @param _maxSupply The maximum number of tickets that can be minted
+     * @param initialBaseURI The initial base URI for the NFT metadata
      */
     constructor(
         string memory name,
         string memory symbol,
         uint256 _maxSupply,
-        string memory _baseURI
-    ) ERC721(name, symbol) {
+        string memory initialBaseURI
+    ) ERC721(name, symbol) Ownable(msg.sender) {
         maxSupply = _maxSupply;
-        baseURI = _baseURI;
+        baseURI = initialBaseURI;
         nextTokenId = 1;
     }
 
@@ -69,3 +70,4 @@ contract EventTicketNFT is ERC721URIStorage, Ownable {
         baseURI = _newBaseURI;
     }
 }
+//EventTicketModule#EventTicketNFT - 0x2Ee46Fd1A59D878A8179BC87d706714FFa201e09
